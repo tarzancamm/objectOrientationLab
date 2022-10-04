@@ -217,12 +217,24 @@ var user = {
 //Code Here
 
 
+let {name, email} = user
+name = 'Bryan G. Smith'
+email = "bryan.smith@devmounta.in"
+// console.log(name)
+// console.log(email)
+// console.log(user)
+
+
 //////////////////////////// PROBLEM 11 ////////////////////////////
 /*
   Using the user object above, delete the users age off of the object.
 */
 
 //Code Here
+
+
+delete user.age
+console.log(user)
 
 
 //////////////////////////// PROBLEM 12 ////////////////////////////
@@ -235,6 +247,17 @@ var user = {
 //Code here
 
 
+class Cat {
+  constructor(name, age, color){
+    this.name = name
+    this.age = age
+    this.color = color
+  }
+}
+
+let cat1 = new Cat('Gatsby', 4, 'white')
+console.log(cat1.name)
+
 
 //////////////////////////// PROBLEM 13 ////////////////////////////
 /*
@@ -245,6 +268,23 @@ var user = {
 */
 
 //Code here
+
+
+class Wizard {
+  constructor(name, age, favoriteSpell){
+  this.name = name
+  this.age = age
+  this.favoriteSpell = favoriteSpell
+  }
+  castSpell(){
+    console.log(this.name + ' has cast ' + this.favoriteSpell)
+  }
+}
+
+let wizard1 = new Wizard('Harry', 16, 'lumos')
+wizard1.castSpell()
+
+
 
 //////////////////////////// PROBLEM 14 ////////////////////////////
 /*
@@ -271,6 +311,26 @@ var user = {
 
 //Code Here
 
+class Phone {
+  constructor(brand, model, storage, color, price, sold) {
+    this.brand = brand
+    this.model = model
+    this.storage = storage
+    this.color = color 
+    this.price = price 
+    this.sold = false
+  }
+  sell() {
+    this.sold = true
+    console.log(this.brand + ' ' + this.model + ' has been sold.')
+  }
+  changePrice(newPrice) {
+    this.price = newPrice
+  }
+}
+
+
+
   
 /*
     Next make three new phone instances using your class.
@@ -284,6 +344,12 @@ var user = {
 
 //Code Here
 
+let iPhone1 = new Phone('iPhone', 'iPhone 27', 150, 'black', 1200)
+let galaxy1 = new Phone('Samsung', 'Galaxy', 200, 'blue', 1100)
+let flip1 = new Phone('Nokia', 'Flipster', 1, 'silver', 200)
+
+
+
 /* 
   Call the changePrice function on one of your phones, 
   don't forget to pass in a new price 
@@ -294,6 +360,11 @@ var user = {
 //Code Here 
 
 
+iPhone1.changePrice(999)
+console.log(iPhone1)
+
+
+
 /*
   Now call the sell method on one of your other phone objects
 
@@ -302,6 +373,8 @@ var user = {
 
 //Code Here 
 
+iPhone1.sell()
+console.log(iPhone1.sold)
 
 //////////////////////////// PROBLEM 15 ////////////////////////////
 
@@ -321,6 +394,8 @@ const colors = {
 
 //Code Here 
 
+let colorsCopy = {...colors}
+console.log(colorsCopy)
 
 
 /*
@@ -349,6 +424,10 @@ const shippingInfo = {
 
 //Code Here
 
+let helensInfo = {...contactInfo, ...shippingInfo}
+console.log(helensInfo)
+
+
 
 //Print helensInfo to see what it looks like, there should be no repeating properties.
 
@@ -367,12 +446,30 @@ const shippingInfo = {
 
 //Code Here 
 
+class Vehicle {
+  constructor(capacity, color, mileage){
+    this.capacity = capacity
+    this.color = color
+    this.mileage = mileage
+  }
+  move(miles){
+    this.mileage += miles
+    console.log(this.mileage)
+  }
+}
+
+
 
 /*
   Create a vehicle using your new class and save it to a variable called myFirstVehicle
 */
 
 //Code Here
+
+let myFirstVehicle = new Vehicle(5, 'white', 220000)
+// console.log(myFirstVehicle)
+// myFirstVehicle.move(1000)
+
 
 
 /* 
@@ -385,11 +482,24 @@ const shippingInfo = {
 
 //Code Here
 
+class Motorcycle extends Vehicle {
+  constructor(capacity, color, mileage, make, isCool){
+    super(capacity, color, mileage)
+    this.make = make
+    this.isCool = true
+  }
+}
+
+
 /*
   Create a Motorcycle using your new class and save it to a variable called myFirstMotorcycle
 */
 
 //Code Here 
+
+let myFirstMotorcycle = new Motorcycle('Harley-Davidson', 'yes', 1, 'black', 5000)
+console.log(myFirstMotorcycle)
+
 
 /*
   Call the move function on myFirstMotorcycle (don't forget the parameter)
@@ -414,6 +524,26 @@ const shippingInfo = {
 //Code Here
 
 
+class Boat extends Vehicle{
+  constructor(capacity, color, mileage, name, type, isSeaworthy){
+    super(capacity, color, mileage)
+    this.name = name
+    this.type = type
+    this.isSeaworthy = false
+  }
+  checkSeaworthiness() {
+    if (this.isSeaworthy === true) {
+      console.log('The ' + this.color + ' ' + this.type + ' ' + this.name + ' is seaworthy!')
+    } else {
+      console.log('You need to get your ' + this.type + ' in shape!')
+    }
+  }
+  performMaintenance() {
+    this.isSeaworthy = true
+  }
+}
+
+
 /*
   Create a new boat using your class. You can choose whatever values you like for all the 
   properties except isSeaworthy -- make that one false. Call your variable myFirstBoat.
@@ -421,11 +551,17 @@ const shippingInfo = {
 
 //Code Here
 
+let myFirstBoat = new Boat(25, 'matte black', 0, 'The Dark Knight', 'yacht', false)
+console.log(myFirstBoat)
+
+
 /*
   Call the checkSeaworthiness method on your new boat
 */
 
 //Code Here
+
+myFirstBoat.checkSeaworthiness()
 
 /*
   Now run the performMaintenance method on your boat
@@ -433,8 +569,12 @@ const shippingInfo = {
 
 //Code Here 
 
+myFirstBoat.performMaintenance()
+
 /*
   Check the seaworthiness once more (you should be ready for the water!)
 */
 
 //Code Here
+
+myFirstBoat.checkSeaworthiness()
